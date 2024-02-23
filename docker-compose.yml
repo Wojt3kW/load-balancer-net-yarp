@@ -1,0 +1,69 @@
+version: "3.9"
+name: "load-balancer-yarp"
+
+services:
+  loadbalancer.api:
+    image: ${DOCKER_REGISTRY-}loadbalancerapi
+    container_name: loadbalancer-api
+    build:
+      context: .
+      dockerfile: LoadBalancer.Api/Dockerfile
+    ports:
+      - 5001:80
+      - 5101:443
+    networks:
+      - yarp_network
+  users.api1:
+    image: ${DOCKER_REGISTRY-}usersapi
+    container_name: users-api1
+    build:
+      context: .
+      dockerfile: Users.Api/Dockerfile
+    networks:
+      - yarp_network
+  users.api2:
+    image: ${DOCKER_REGISTRY-}usersapi
+    container_name: users-api2
+    build:
+      context: .
+      dockerfile: Users.Api/Dockerfile
+    networks:
+      - yarp_network
+  users.api3:
+    image: ${DOCKER_REGISTRY-}usersapi
+    container_name: users-api3
+    build:
+      context: .
+      dockerfile: Users.Api/Dockerfile
+    networks:
+      - yarp_network
+
+  roles.api1:
+    image: ${DOCKER_REGISTRY-}rolesapi
+    container_name: roles-api1
+    build:
+      context: .
+      dockerfile: Roles.Api/Dockerfile
+    networks:
+      - yarp_network
+  roles.api2:
+    image: ${DOCKER_REGISTRY-}rolesapi
+    container_name: roles-api2
+    build:
+      context: .
+      dockerfile: Roles.Api/Dockerfile
+    networks:
+      - yarp_network
+  roles.api3:
+    image: ${DOCKER_REGISTRY-}rolesapi
+    container_name: roles-api3
+    build:
+      context: .
+      dockerfile: Roles.Api/Dockerfile
+    networks:
+      - yarp_network
+
+networks:
+  yarp_network:
+    name: yarp_network
+    driver: bridge
