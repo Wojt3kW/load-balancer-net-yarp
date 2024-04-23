@@ -1,4 +1,4 @@
-Example of using [Yarp](https://github.com/microsoft/reverse-proxy) as a load balancer.
+Example of using [Yarp](https://github.com/microsoft/reverse-proxy) as a microservices gateway with load balancer.
 
 ## Getting started
 1. Download [Docker Desktop](https://www.docker.com/products/docker-desktop/) for Windows. [Docker Compose](https://docs.docker.com/compose/) will be automatically installed.
